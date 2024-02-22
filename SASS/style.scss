@@ -1,0 +1,92 @@
+// scss
+$headings-color: red;
+
+.header {
+  text-align: center;
+  color: $headings-color;
+}
+
+// nested scss
+.blog-post {
+  h2 {
+    text-align: center;
+    color: blue;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+// @mixin, @include
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+#awesome {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  @include border-radius(15px);
+}
+
+// if, if-else-if, else
+@mixin border-stroke($val) {
+  @if $val == light {
+    border: 1px solid black;
+  } @else if $val == medium {
+    border: 3px solid black;
+  } @else if $val == heavy {
+    border: 6px solid black;
+  } @else {
+    border: none;
+  }
+}
+#box {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  @include border-stroke(none);
+}
+
+// @for loop
+// @for $j from 1 to 6 {
+//   .text-#{$j} {
+//     font-size: 15px * $j;
+//   }
+// }
+
+// @each
+@each $color in blue, black, red {
+  .#{$color}-bg {
+    background-color: $color;
+    height: 200px;
+    width: 200px;
+  }
+}
+
+// @while loop
+$x: 1;
+@while $x < 6 {
+  .text-#{$x} {
+    font-size: 15px * $x;
+  }
+  $x: $x + 1;
+}
+
+// import
+// @import "variables" 
+
+// @extend
+.info {
+  width: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+.info-important {
+  @extend .info;
+  background-color: magenta;
+}
